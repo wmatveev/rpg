@@ -10,5 +10,14 @@ namespace RPG.Weapons
         Knife          = 4,     // Нож
         Shotgun        = 5      // Дробовик
     }
-
+    
+    public enum TypesOfCartridges : ushort
+    {
+        Lead         = 1,   // Свинцовые патроны
+        Fire         = 2,   // Возгорающиеся патроны
+        Explosive    = 3,   // Разрывные патроны
+        Shot         = 4,   // Дробь
+        Tranquilizer = 5    // Транквилизатор
+    }
+    
 }

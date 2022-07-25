@@ -44,7 +44,6 @@
         <Compile Include="Character\TypeDamage.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Weapons\Ammo.cs" />
         <Compile Include="Weapons\Firearms.cs" />
         <Compile Include="Weapons\SteelArms.cs" />
         <Compile Include="Weapons\TypesOfWeapons.cs" />

@@ -21,7 +21,7 @@ namespace Rpg
         public CharacterStats  Character;
         public CharacterHealth Health;
 
-        // Список оружия, которым владеет персонаж
+        // Список огнестрельного оружия, которым владеет персонаж
         public readonly Dictionary<TypesOfWeapons, Firearms> ListOfFirearms = new Dictionary<TypesOfWeapons, Firearms>();
 
         public CharacterCreation()
