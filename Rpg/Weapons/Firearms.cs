@@ -5,9 +5,13 @@ namespace RPG.Weapons
     // Огнестрельное оружие
     public class Firearms : Weapons
     {
-        // Добавляем пистолет с значениями по умолчанию
-        public void AddGun()
+        private Dictionary<TypesOfWeapons, bool> _listOfAvailableWeapons = new Dictionary<TypesOfWeapons, bool>();
+
+        // Добавляем новое оружие в арсенал
+        public void AaddingWeaponsToArsenal(TypesOfWeapons typesOfWeapons)
         {
+            if( !_listOfAvailableWeapons.ContainsKey(typesOfWeapons) )
+                _listOfAvailableWeapons.Add(typesOfWeapons, true);
         }
 
         public override void GetDamage()
@@ -15,9 +19,10 @@ namespace RPG.Weapons
             
         }
 
-        public override void Shoot()
+        // Возвращаем урон при выстреле
+        public override float Shoot()
         {
-            
+            return .0f;
         }
     }
 }

@@ -28,8 +28,8 @@ namespace RPG.Weapons
         //         new CoefOfWeaponType { Weapon = TypesOfWeapons.Rifle, Coef = 0.4f }
         //     };
 
-        public abstract void GetDamage();
-        public abstract void Shoot();
+        public abstract void  GetDamage();
+        public abstract float Shoot();
 
         protected Weapons()
         {

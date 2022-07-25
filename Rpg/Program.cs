@@ -10,13 +10,15 @@ namespace Rpg
         public static void Main(string[] args)
         {
             // Создаем персонажа
-            CharacterCreation mainCharacter = new CharacterCreation();
-            
+            CharacterCreator mainCharacter = new CharacterCreator();
             mainCharacter.Health.Damageable(10);
+            
+            // Создаем противника
+            CharacterCreator enemy = new CharacterCreator();
         }
     }
 
-    public class CharacterCreation
+    public class CharacterCreator
     {
         public CharacterStats  Character;
         public CharacterHealth Health;
@@ -24,7 +26,7 @@ namespace Rpg
         // Список огнестрельного оружия, которым владеет персонаж
         public readonly Dictionary<TypesOfWeapons, Firearms> ListOfFirearms = new Dictionary<TypesOfWeapons, Firearms>();
 
-        public CharacterCreation()
+        public CharacterCreator()
         {
             // Создаем дефолтные статы персонажа
             Character = new CharacterStats();
@@ -34,7 +36,7 @@ namespace Rpg
             
             // Добавляем оружие персонажу (пистолет)
             ListOfFirearms.Add( TypesOfWeapons.Gun, new Firearms() );
-            ListOfFirearms[ TypesOfWeapons.Gun ].AddGun();
+            ListOfFirearms[ TypesOfWeapons.Gun ].AaddingWeaponsToArsenal(TypesOfWeapons.Gun);
         }
     }
 }

@@ -8,9 +8,9 @@ namespace RPG.Weapons
             
         }
 
-        public override void Shoot()
+        public override float Shoot()
         {
-            
+            return .0f;
         }
     }
 }
