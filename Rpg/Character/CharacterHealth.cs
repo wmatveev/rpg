@@ -2,29 +2,72 @@ using System;
 
 namespace RPG.Character
 {
-    public class CharacterHealth
+    public interface IHealthStatus
     {
-        private int _amountOfHealth; // Количество здоровья
+        event Action OnDie;
+
+        bool IsAlive       { get; }     // Возвращаем, жив ли персонаж
+        int  MaxHealth     { get; }     // Возвращаем максимальное здоровье
+        int  CurrentHealth { get; }     // Текущее здоровье
+        /// <summary>
+        /// value 0..1 = CurrentHealth / MaxHealth 
+        /// </summary>
+
+        void DealDamage(int amount);    // Нанести удар
+        void HealDamage(int amount);    // Исцеляем повреждения
+        void Death();                   // Мгновенная смерть
+    }
+    
+    public class CharacterHealth : IHealthStatus
+    {
+        public event Action OnDie;
         
-        public delegate void Death();
-        // TODO раскоментировать позже public event Death EventOfDeath;
+        public int  MaxHealth     => _stats.MaxHealth;
+        public int  CurrentHealth => _stats.MaxHealth - _injuries;
+        public float HealthAmount => (float)CurrentHealth / MaxHealth;
+
+        public bool  IsAlive      { get; private set; }
+
+        private int   _injuries; // Количество здоровья
+        private Stats _stats;
         
-        public CharacterHealth(CharacterStats characterStats)
+        
+        public CharacterHealth(ref Stats Stats)
         {
-            // EventOfDeath += CharacterDeath;
-            // _characterStats = characterStats;
+            _stats = Stats;
         }
 
         // Получение урона
         public void Damageable(int amountOfDamage)
         {
-            _amountOfHealth -= amountOfDamage; // Уменьшаем количество здоровья на сумму урона
+            // _injuries -= amountOfDamage; // Уменьшаем количество здоровья на сумму урона
         }
         
-        // Метод, где будет умирать персонаж
-        private void CharacterDeath()
+        /// Нанести удар
+        public void DealDamage(int amount)
         {
-            // CharacterStats.IsAlive = false;
+            _injuries += amount;
+            if (_injuries > MaxHealth)
+                Death();
+        }
+
+        /// Исцеляем повреждения
+        public void HealDamage(int amount)
+        {
+            _injuries -= amount;
+            if (_injuries < 0)
+                _injuries = 0;
+        }
+
+        /// Смерть персонажа
+        public void Death()
+        {
+            IsAlive = false;
+
+            OnDie?.Invoke();
+            // if (OnDie != null)
+            //     OnDie();
+
         }
     }
 }
