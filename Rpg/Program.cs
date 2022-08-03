@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using RPG.Character;
+using RPG.Character.CharacterCreationFactory;
 using RPG.Weapons;
-// ReSharper disable All
+using RPG.Weapons.DamageCalculation;
 
 namespace Rpg
 {
@@ -10,17 +12,35 @@ namespace Rpg
     {
         public static void Main(string[] args)
         {
-            // // Создаем персонажа
-            // Character mainCharacter = new Character();
-            // mainCharacter.Health.Damageable(10);
-            //
-            // // Создаем противника
-            // Character enemy = new Character();
-            Stats stats = Stats.Default;
-            Character testPlayerCharacter = new Character(ref stats);
+            Balance balance = new Balance()
+            {
+                PlayerBalance = new Dictionary<string, PlayerBalance>()
+                {
+                    ["Player1"] = new PlayerBalance()
+                    {
+                        Stats = Stats.Default 
+                    }
+                },
+                EnemyBalance  = new Dictionary<string, EnemyBalance>()
+                {
+                    ["Enemy1"] = new EnemyBalance()
+                    {
+                        Stats = Stats.Default
+                    }
+                }
+            };
+            
+            CharactersFactory MainCharacter = new CharactersFactory(balance, new TestDamageCalculator());
 
-            testPlayerCharacter.Health.DealDamage(50);
+            var Player = MainCharacter.CreateCharacter("Player1");
+            var Enemy  = MainCharacter.CreateCharacter("Enemy1");
+
+
         }
+    }
+
+    internal class CreateCharacter
+    {
     }
 
     public class Character
@@ -33,13 +53,10 @@ namespace Rpg
         // Список огнестрельного оружия, которым владеет персонаж
         public readonly Dictionary<TypesOfWeapons, Firearms> ListOfFirearms = new Dictionary<TypesOfWeapons, Firearms>();
 
-        public Character(ref Stats stats)
+        public Character(Stats stats, IDamageCalculator damageCalculator)
         {
-            // Создаем дефолтные статы персонажа
-            Stats = stats;
-
             // Здоровье персонажа
-            Health = new CharacterHealth(ref stats);
+            Health = new CharacterHealth(stats, damageCalculator);
             
             // Добавляем оружие персонажу (пистолет)
             ListOfFirearms.Add( TypesOfWeapons.Gun, new Firearms() );

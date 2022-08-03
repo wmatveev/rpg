@@ -39,11 +39,19 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Character\CharacterCreationFactory\CharatersFactory.cs" />
+        <Compile Include="Character\CharacterCreationFactory\CreateCharater.cs" />
+        <Compile Include="Character\CharacterCreationFactory\PlayerBalance.cs" />
+        <Compile Include="Character\Damage.cs" />
+        <Compile Include="Character\IHealthStatus.cs" />
         <Compile Include="Character\Stats.cs" />
         <Compile Include="Character\CharacterHealth.cs" />
         <Compile Include="Character\TypeDamage.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Weapons\DamageCalculation\DamageCalculator.cs" />
+        <Compile Include="Weapons\DamageCalculation\IDamageCalculator.cs" />
+        <Compile Include="Weapons\DamageCalculation\TestDamageCalculator.cs" />
         <Compile Include="Weapons\Firearms.cs" />
         <Compile Include="Weapons\SteelArms.cs" />
         <Compile Include="Weapons\TypesOfWeapons.cs" />

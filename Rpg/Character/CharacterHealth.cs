@@ -1,54 +1,36 @@
 using System;
+using RPG.Weapons.DamageCalculation;
 
 namespace RPG.Character
 {
-    public interface IHealthStatus
-    {
-        event Action OnDie;
-
-        bool IsAlive       { get; }     // Возвращаем, жив ли персонаж
-        int  MaxHealth     { get; }     // Возвращаем максимальное здоровье
-        int  CurrentHealth { get; }     // Текущее здоровье
-        /// <summary>
-        /// value 0..1 = CurrentHealth / MaxHealth 
-        /// </summary>
-
-        void DealDamage(int amount);    // Нанести удар
-        void HealDamage(int amount);    // Исцеляем повреждения
-        void Death();                   // Мгновенная смерть
-    }
-    
     public class CharacterHealth : IHealthStatus
     {
-        public event Action OnDie;
+        public event Action<Damage> OnDie;
         
-        public int  MaxHealth     => _stats.MaxHealth;
-        public int  CurrentHealth => _stats.MaxHealth - _injuries;
-        public float HealthAmount => (float)CurrentHealth / MaxHealth;
+        private int _injuries;          // Количество здоровья
+        private readonly Stats _stats;
+        private readonly IDamageCalculator _calculator;
+        
+        public int   MaxHealth     => _stats.MaxHealth;
+        public int   CurrentHealth => _stats.MaxHealth - _injuries;
+        public float HealthAmount  => (float)CurrentHealth / MaxHealth;
 
         public bool  IsAlive      { get; private set; }
 
-        private int   _injuries; // Количество здоровья
-        private Stats _stats;
-        
-        
-        public CharacterHealth(ref Stats Stats)
+
+
+        public CharacterHealth(Stats Stats, IDamageCalculator calculator)
         {
+            _calculator = calculator;
             _stats = Stats;
         }
 
-        // Получение урона
-        public void Damageable(int amountOfDamage)
-        {
-            // _injuries -= amountOfDamage; // Уменьшаем количество здоровья на сумму урона
-        }
-        
         /// Нанести удар
-        public void DealDamage(int amount)
+        public void DealDamage(Damage damage)
         {
-            _injuries += amount;
+            _injuries += _calculator.GetDamage(damage, _stats);
             if (_injuries > MaxHealth)
-                Death();
+                Death(damage);
         }
 
         /// Исцеляем повреждения
@@ -60,11 +42,11 @@ namespace RPG.Character
         }
 
         /// Смерть персонажа
-        public void Death()
+        public void Death(Damage damage)
         {
             IsAlive = false;
 
-            OnDie?.Invoke();
+            OnDie?.Invoke(damage);
             // if (OnDie != null)
             //     OnDie();
 

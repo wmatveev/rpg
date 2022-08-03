@@ -13,6 +13,7 @@ namespace RPG.Weapons
     
     public enum TypesOfCartridges : ushort
     {
+        None         = 0,
         Lead         = 1,   // Свинцовые патроны
         Fire         = 2,   // Возгорающиеся патроны
         Explosive    = 3,   // Разрывные патроны

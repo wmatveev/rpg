@@ -3,7 +3,7 @@ namespace RPG.Character
     public class Stats
     {
         private const int DEFAULT_STAT = 5;
-        private const int DEFAULT_HP = 100;
+        private const int DEFAULT_HP   = 100;
         
         public int Power;            // Сила персонажа
         public int Energy;           // Енергия персонажа
