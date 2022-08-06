@@ -6,7 +6,7 @@ using RPG.Character.CharacterCreationFactory;
 
 namespace Rpg.Balans
 {
-    public class GetCharactersBalans
+    public class GetCharactersBalans : IGetBalans
     {
         public Balance GetBalans()
         {
@@ -17,21 +17,15 @@ namespace Rpg.Balans
 
         public void CreateJsonBalansFromExample()
         {
-            Balance balance = new Balance()
-            {
-                PlayerBalance = new Dictionary<string, PlayerBalance>()
-                {
-                    ["Player1"] = new PlayerBalance()
-                    {
+            Balance balance = new Balance() {
+                PlayerBalance = new Dictionary<string, PlayerBalance>() {
+                    ["Player1"] = new PlayerBalance() {
                         Stats = Stats.Default 
                     }
                 },
-                EnemyBalance  = new Dictionary<string, EnemyBalance>()
-                {
-                    ["Enemy1"] = new EnemyBalance()
-                    {
-                        Stats = Stats.Default
-                    }
+                EnemyBalance  = new Dictionary<string, EnemyBalance>() {
+                    ["Enemy1"] = new EnemyBalance() {
+                        Stats = Stats.Default }
                 }
             };
             
