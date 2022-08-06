@@ -42,6 +42,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Balans\GetCharactersBalans.cs" />
         <Compile Include="Character\CharacterCreationFactory\CharatersFactory.cs" />
         <Compile Include="Character\CharacterCreationFactory\CreateCharater.cs" />
         <Compile Include="Character\CharacterCreationFactory\PlayerBalance.cs" />

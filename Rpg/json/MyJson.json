@@ -1,24 +1,38 @@
 {
-	"Characters":
-	{
-		"Player1":
-		{
-			"Power":5,
-			"Energy":5,
-			"Agility":5,
-			"Endurance":5,
-			"DamageProtection":5,
-			"MaxHealth":100
-		},
-		
-		"Enemy1":
-		{
-			"Power":1,
-			"Energy":1,
-			"Agility":1,
-			"Endurance":1,
-			"DamageProtection":1,
-			"MaxHealth":10
-		}
-	}
+  "PlayerBalance": {
+    "Player1": {
+      "Stats": {
+        "Power": 5,
+        "Energy": 5,
+        "Agility": 5,
+        "Endurance": 5,
+        "DamageProtection": 5,
+        "MaxHealth": 100
+      }
+    }
+  },
+  "EnemyBalance": {
+    "Enemy1": {
+      "Stats": {
+        "Power": 5,
+        "Energy": 5,
+        "Agility": 5,
+        "Endurance": 5,
+        "DamageProtection": 5,
+        "MaxHealth": 100
+      }
+    }
+  },
+  "EnemyBalance": {
+    "Enemy2": {
+      "Stats": {
+        "Power": 5,
+        "Energy": 5,
+        "Agility": 5,
+        "Endurance": 5,
+        "DamageProtection": 5,
+        "MaxHealth": 100
+      }
+    }
+  }
 }
