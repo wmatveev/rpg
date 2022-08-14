@@ -8,11 +8,17 @@ namespace Rpg.Balans
 {
     public class GetCharactersBalans : IGetBalans
     {
+        private string _path;
+        
+        public GetCharactersBalans(string Path)
+        {
+            _path = Path;
+        }
+
         public Balance GetBalans()
         {
-            Balance balance = JsonConvert.DeserializeObject<Balance>(File.ReadAllText(@"MyJson.json"));
-
-            return balance;
+            // TODO сделать через конструктор
+            return JsonConvert.DeserializeObject<Balance>(File.ReadAllText(_path));
         }
 
         public void CreateJsonBalansFromExample()

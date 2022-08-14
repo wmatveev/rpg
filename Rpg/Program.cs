@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Rpg.Balans;
 using RPG.Character;
@@ -15,12 +16,12 @@ namespace Rpg
     {
         public static void Main(string[] args)
         {
-            Balance balance = new GetCharactersBalans().GetBalans();
+            Balance balance = new GetCharactersBalans("MyJson.json").GetBalans();
             
             ICharatersFactory MainCharacter = new CharactersFactory(balance, new TestDamageCalculator());
             
-            var Player = MainCharacter.CreateCharacter("Player1");
-            var Enemy  = MainCharacter.CreateCharacter("Enemy1");
+            Character Player = MainCharacter.CreateCharacter("Player1");
+            Character Enemy  = MainCharacter.CreateCharacter("Enemy1");
         }
     }
 
@@ -31,17 +32,29 @@ namespace Rpg
         public Stats Stats          { get; private set; }
         public IHealthStatus Health { get; private set; }
 
+        public IWeaponController WeaponController;
+
         // Список огнестрельного оружия, которым владеет персонаж
-        public readonly Dictionary<TypesOfWeapons, Firearms> ListOfFirearms = new Dictionary<TypesOfWeapons, Firearms>();
+        // public readonly Dictionary<TypesOfWeapons, Firearms> ListOfFirearms = new Dictionary<TypesOfWeapons, Firearms>();
 
         public Character(Stats stats, IDamageCalculator damageCalculator)
         {
             // Здоровье персонажа
             Health = new CharacterHealth(stats, damageCalculator);
-            
+
             // Добавляем оружие персонажу (пистолет)
-            ListOfFirearms.Add( TypesOfWeapons.Gun, new Firearms() );
-            ListOfFirearms[ TypesOfWeapons.Gun ].AaddingWeaponsToArsenal(TypesOfWeapons.Gun);
+            WeaponController = new WeaponController();
+            WeaponController.AddWeaponToCharacter(new Gun());
+
+            bool res;
+            
+            res = WeaponController.listOfWeapons.Contains(new Gun());
+            res = WeaponController.listOfWeapons.Remove(new Gun());
+
+            // if (WeaponController.listOfWeapons.Contains())
+            // {
+            //     Console.WriteLine("OK");
+            // }
         }
     }
 }
