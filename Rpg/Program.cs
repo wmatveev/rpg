@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Rpg.Attack;
 using Rpg.Balans;
 using RPG.Character;
 using RPG.Character.CharacterCreationFactory;
@@ -16,12 +17,21 @@ namespace Rpg
     {
         public static void Main(string[] args)
         {
+
+            // IGetBalans getBalans = new GetCharactersBalans("MyJson.json");
+            // getBalans.CreateJsonBalansFromExample();
+            
             Balance balance = new GetCharactersBalans("MyJson.json").GetBalans();
             
-            ICharatersFactory MainCharacter = new CharactersFactory(balance, new TestDamageCalculator());
+            ICharatersFactory MainCharacter = new CharactersFactory(balance, new DamageCalculator());
             
             Character Player = MainCharacter.CreateCharacter("Player1");
-            Character Enemy  = MainCharacter.CreateCharacter("Enemy1");
+            Character Enemy1  = MainCharacter.CreateCharacter("Enemy1");
+            Character Enemy2  = MainCharacter.CreateCharacter("Enemy2");
+
+
+            IAttack Attack = new Attack.Attack();
+            Attack.CharacterAttack(Player, Enemy1);
         }
     }
 
@@ -39,22 +49,14 @@ namespace Rpg
 
         public Character(Stats stats, IDamageCalculator damageCalculator)
         {
+            Stats = stats;
+            
             // Здоровье персонажа
             Health = new CharacterHealth(stats, damageCalculator);
 
             // Добавляем оружие персонажу (пистолет)
             WeaponController = new WeaponController();
-            WeaponController.AddWeaponToCharacter(new Gun());
-
-            bool res;
-            
-            res = WeaponController.listOfWeapons.Contains(new Gun());
-            res = WeaponController.listOfWeapons.Remove(new Gun());
-
-            // if (WeaponController.listOfWeapons.Contains())
-            // {
-            //     Console.WriteLine("OK");
-            // }
+            WeaponController.AddWeaponToCharacter(new Gun(10, 100, 5));
         }
     }
 }

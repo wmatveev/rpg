@@ -42,6 +42,8 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Attack\Attack.cs" />
+        <Compile Include="Attack\IAttack.cs" />
         <Compile Include="Balans\GetCharactersBalans.cs" />
         <Compile Include="Balans\IGetBalans.cs" />
         <Compile Include="Character\CharacterCreationFactory\ICharatersFactory.cs" />

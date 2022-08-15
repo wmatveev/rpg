@@ -4,21 +4,38 @@ namespace RPG.Weapons
 {
     public enum TypesOfWeapons : ushort
     {
-        Rifle          = 1,     // Винтовка
-        Gun            = 2,     // Пистолет
-        AutomaticRifle = 3,     // Атомат
-        Knife          = 4,     // Нож
-        Shotgun        = 5      // Дробовик
+        /// Винтовка
+        Rifle = 1,
+        
+        /// Пистолет
+        Gun = 2,
+        
+        /// Атомат
+        AutomaticRifle = 3,
+        
+        /// Нож
+        Knife = 4,
+        
+        /// Дробовик
+        Shotgun = 5
     }
     
     public enum TypesOfCartridges : ushort
     {
-        None         = 0,
-        Lead         = 1,   // Свинцовые патроны
-        Fire         = 2,   // Возгорающиеся патроны
-        Explosive    = 3,   // Разрывные патроны
-        Shot         = 4,   // Дробь
-        Tranquilizer = 5    // Транквилизатор
+        None = 0,
+        /// Свинцовые патроны
+        Lead = 1,
+        
+        /// Возгорающиеся патроны
+        Fire = 2,
+        
+        /// Разрывные патроны
+        Explosive = 3,
+        
+        /// Дробь
+        Shot = 4,
+        
+        /// Транквилизатор
+        Tranquilizer = 5
     }
-    
 }

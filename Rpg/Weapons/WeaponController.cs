@@ -7,6 +7,18 @@ namespace RPG.Weapons
         public List<IWeapon> listOfWeapons { get; }
         public IWeapon CurrentWeapon { get; private set; }
 
+        // public static WeaponController DefaultForPlayer => new WeaponController()
+        // {
+        //     listOfWeapons = { new Gun(), new Knife() },
+        //     CurrentWeapon = new Knife()
+        // };
+        //
+        // public static WeaponController DefaultForEnemy => new WeaponController()
+        // {
+        //     listOfWeapons = { new Gun() },
+        //     CurrentWeapon = new Gun()
+        // };
+
         public WeaponController()
         {
             listOfWeapons = new List<IWeapon>();
@@ -25,6 +37,8 @@ namespace RPG.Weapons
         public void DropWeaponFromCharacter(IWeapon weapon)
         {
             listOfWeapons.Remove(weapon);
+            
+            // Если не остается оружия у персонажа, то обнуляем текущее оружие
             CurrentWeapon = listOfWeapons.Count != 0 ? listOfWeapons[0] : null;
         }
 

@@ -16,6 +16,11 @@ namespace RPG.Weapons.DamageCalculation
             _damageCoefOfWeaponType    = damageCoefWeapon;
         }
 
+        public DamageCalculator()
+        {
+            
+        }
+
         public int GetDamage(Damage damage, Stats stats)
         {
             // Количество урона * на коэффициент от типа пули * на коэффициент от оружия – защита персонажа
@@ -25,6 +30,13 @@ namespace RPG.Weapons.DamageCalculation
             if (result <= 0)
                 return 0;
             
+            return result;
+        }
+
+        public int GetDamage(IWeapon attackersWeapon, Stats statsTarget)
+        {
+            int result = attackersWeapon.ShotDamage - statsTarget.DamageProtection;
+
             return result;
         }
     }

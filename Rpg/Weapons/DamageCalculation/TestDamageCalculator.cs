@@ -8,5 +8,10 @@ namespace RPG.Weapons.DamageCalculation
         {
             return damage.Amount;
         }
+
+        public int GetDamage(IWeapon attackersWeapon, Stats statsTarget)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

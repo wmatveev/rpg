@@ -3,12 +3,20 @@ using Rpg.Target;
 
 namespace RPG.Weapons
 {
-    public class Gun : IWeapon, IEquatable<Gun>
+    public class Gun : IWeapon
     {
-        public int CountCartridges { get; }
-        public int IsReloading     { get; }
-        public int Range           { get; }
-        public bool CanShoot       { get; }
+        public int CountCartridges { get; }     // Количество патронов
+        public int IsReloading     { get; }     // В процессе перезарядки
+        public int Range           { get; }     // Диапазон выстрела
+        public bool CanShoot       { get; }     // Возможность стрелять
+        public int ShotDamage      { get; }     // Урон от выстрела / броска
+
+        public Gun(int CountCartridges, int Range, int ShotDamage)
+        {
+            this.CountCartridges = CountCartridges;
+            this.Range           = Range;
+            this.ShotDamage      = ShotDamage;
+        }
 
         public ITarget Shoot()
         {

@@ -1,4 +1,5 @@
 using System;
+using RPG.Weapons;
 using RPG.Weapons.DamageCalculation;
 
 namespace RPG.Character
@@ -7,7 +8,7 @@ namespace RPG.Character
     {
         public event Action<Damage> OnDie;
         
-        private int _injuries;          // Количество здоровья
+        private int _injuries;               // Количество повреждения
         private readonly Stats _stats;
         private readonly IDamageCalculator _calculator;
         
@@ -21,8 +22,8 @@ namespace RPG.Character
 
         public CharacterHealth(Stats Stats, IDamageCalculator calculator)
         {
-            _calculator = calculator;
             _stats = Stats;
+            _calculator = calculator;
         }
 
         /// Нанести удар
@@ -31,6 +32,14 @@ namespace RPG.Character
             _injuries += _calculator.GetDamage(damage, _stats);
             if (_injuries > MaxHealth)
                 Death(damage);
+        }
+
+        /// Нанести удар
+        public void DealDamage(IWeapon attackersWeapon, Stats statsTarget)
+        {
+            _injuries += _calculator.GetDamage(attackersWeapon, statsTarget);
+            // if (_injuries > MaxHealth)
+            //     Death(damage);
         }
 
         /// Исцеляем повреждения

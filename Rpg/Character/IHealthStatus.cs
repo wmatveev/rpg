@@ -1,4 +1,5 @@
 ﻿using System;
+using RPG.Weapons;
 
 namespace RPG.Character
 {
@@ -18,6 +19,7 @@ namespace RPG.Character
 
         /// Нанести удар
         void DealDamage(Damage damage);
+        void DealDamage(IWeapon attackersWeapon, Stats statsTarget);
         
         /// Исцеляем повреждения
         void HealDamage(int amount);
