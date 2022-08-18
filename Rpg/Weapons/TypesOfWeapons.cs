@@ -1,8 +1,42 @@
 using System;
+using System.Collections.Generic;
 
 namespace RPG.Weapons
 {
-    public enum TypesOfWeapons : ushort
+    public struct WeaponsAndOptions
+    {
+        public int TypeOfWeapon;
+        public int WeaponDamage;
+        public int AmountOfCartiridges;
+        // public Dictionary<int, TypeOfCartridges> AcceptableCartridges;
+    }
+
+    public struct TypeOfCartridges
+    {
+        public int None;
+        public int Lead;
+        public int Fire;
+        public int Explosive;
+        public int Shot;
+        public int Tranquilizer;
+    }
+
+    public struct IDWeapon
+    {
+        public const int Gun            = 1;
+        public const int Rifle          = 2;
+        public const int AutomaticRifle = 3;
+        public const int Shotgun        = 4;
+        public const int Knife          = 5;
+    }
+
+    public struct WeaponData
+    {
+        public TypesOfWeapons Type;
+    }
+    
+    
+    public enum TypesOfWeapons : int
     {
         /// Винтовка
         Rifle = 1,
@@ -20,7 +54,7 @@ namespace RPG.Weapons
         Shotgun = 5
     }
     
-    public enum TypesOfCartridges : ushort
+    public enum TypesOfCartridges : int
     {
         None = 0,
         /// Свинцовые патроны

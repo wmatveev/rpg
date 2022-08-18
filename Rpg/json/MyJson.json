@@ -20,19 +20,22 @@
         "Endurance": 5,
         "DamageProtection": 5,
         "MaxHealth": 100
-      }
+      },
+      "AvailableWeapons": [
+        "Makarov",
+        "AK47"
+      ]
     }
   },
-  "EnemyBalance": {
-    "Enemy2": {
-      "Stats": {
-        "Power": 5,
-        "Energy": 5,
-        "Agility": 5,
-        "Endurance": 5,
-        "DamageProtection": 5,
-        "MaxHealth": 100
-      }
+  "Weapons": {
+    "Makarov": {
+      "Type" : "Gun"
+    },
+    "DesertEagle": {
+      "Type" : "Gun"
+    },
+    "AK47": {
+      "Type" : "AutomaticRifle"
     }
   }
 }

@@ -24,25 +24,27 @@ namespace Rpg.Balans
 
         public void CreateJsonBalansFromExample()
         {
-            Balance balance = new Balance() {
-                PlayerBalance = new Dictionary<string, PlayerBalance>() {
-                    ["Player1"] = new PlayerBalance() {
-                        Stats = Stats.Default,
-                        // WeaponController = WeaponController.DefaultForPlayer 
-                    }
-                },
-                EnemyBalance  = new Dictionary<string, EnemyBalance>() {
-                    ["Enemy1"] = new EnemyBalance() {
-                        Stats = Stats.Default,
-                        // WeaponController = WeaponController.DefaultForEnemy
-                    }
-                }
-            };
-
-            string json = JsonConvert.SerializeObject(balance, Formatting.Indented);
-
-            string path = @"MyJson.json";
-            File.WriteAllText(path, json);
+            // Balance balance = new Balance() {
+            //     PlayerBalance = new Dictionary<string, PlayerBalance>() {
+            //         ["Player1"] = new PlayerBalance() {
+            //             Stats = Stats.Default
+            //         }
+            //     },
+            //     EnemyBalance  = new Dictionary<string, EnemyBalance>() {
+            //         ["Enemy1"] = new EnemyBalance() {
+            //             Stats = Stats.Default,
+            //             AvailableWeapons = new List<string>()
+            //             {
+            //                 IDWeapon.Gun
+            //             }
+            //         }
+            //     }
+            // };
+            //
+            // string json = JsonConvert.SerializeObject(balance, Formatting.Indented);
+            //
+            // string path = _path;
+            // File.WriteAllText(path, json);
         }
     }
 }

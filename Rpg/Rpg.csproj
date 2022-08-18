@@ -70,6 +70,8 @@
         <Compile Include="Weapons\Shotgun.cs" />
         <Compile Include="Weapons\TypesOfWeapons.cs" />
         <Compile Include="Weapons\WeaponController.cs" />
+        <Compile Include="Weapons\WeaponsFactory\WeaponsFactory.cs" />
+        <Compile Include="Weapons\WeaponsFactory\IWeaponsFactory.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />

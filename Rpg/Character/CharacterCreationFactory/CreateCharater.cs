@@ -25,6 +25,11 @@ namespace RPG.Character.CharacterCreationFactory
             else if (_balance.EnemyBalance.TryGetValue(idCharacter, out var enemyData))
             {
                 Character = new Rpg.Character(enemyData.Stats, _damageCalculator);
+
+                foreach (string i in enemyData.AvailableWeapons)
+                {
+                    
+                }
             }
             else { throw new Exception("Key not found"); }
 

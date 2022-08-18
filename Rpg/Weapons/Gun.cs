@@ -11,11 +11,11 @@ namespace RPG.Weapons
         public bool CanShoot       { get; }     // Возможность стрелять
         public int ShotDamage      { get; }     // Урон от выстрела / броска
 
-        public Gun(int CountCartridges, int Range, int ShotDamage)
+        public Gun()
         {
-            this.CountCartridges = CountCartridges;
-            this.Range           = Range;
-            this.ShotDamage      = ShotDamage;
+            CountCartridges = 10;
+            Range = 100;
+            ShotDamage = 5;
         }
 
         public ITarget Shoot()

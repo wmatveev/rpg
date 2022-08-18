@@ -7,24 +7,36 @@ namespace RPG.Weapons
         public List<IWeapon> listOfWeapons { get; }
         public IWeapon CurrentWeapon { get; private set; }
 
-        // public static WeaponController DefaultForPlayer => new WeaponController()
-        // {
-        //     listOfWeapons = { new Gun(), new Knife() },
-        //     CurrentWeapon = new Knife()
-        // };
-        //
-        // public static WeaponController DefaultForEnemy => new WeaponController()
-        // {
-        //     listOfWeapons = { new Gun() },
-        //     CurrentWeapon = new Gun()
-        // };
-
         public WeaponController()
         {
             listOfWeapons = new List<IWeapon>();
         }
 
         // Добавляем оружие в список, которым владеет персонаж
+        public void AddWeaponsToCharacterFromList(List<int> idWeapons)
+        {
+            foreach (var i in idWeapons)
+            {
+                switch (i)
+                {
+                    case IDWeapon.Gun:
+                        listOfWeapons.Add(new Gun());
+                        break;
+                    case IDWeapon.Rifle:
+                        break;
+                    case IDWeapon.AutomaticRifle:
+                        break;
+                    case IDWeapon.Shotgun:
+                        break;
+                    case IDWeapon.Knife:
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+        }
+
         public void AddWeaponToCharacter(IWeapon weapon)
         {
             listOfWeapons.Add(weapon);
