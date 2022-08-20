@@ -11,32 +11,7 @@ namespace RPG.Weapons
         {
             listOfWeapons = new List<IWeapon>();
         }
-
-        // Добавляем оружие в список, которым владеет персонаж
-        public void AddWeaponsToCharacterFromList(List<int> idWeapons)
-        {
-            foreach (var i in idWeapons)
-            {
-                switch (i)
-                {
-                    case IDWeapon.Gun:
-                        listOfWeapons.Add(new Gun());
-                        break;
-                    case IDWeapon.Rifle:
-                        break;
-                    case IDWeapon.AutomaticRifle:
-                        break;
-                    case IDWeapon.Shotgun:
-                        break;
-                    case IDWeapon.Knife:
-                        break;
-                    
-                    default:
-                        break;
-                }
-            }
-        }
-
+        
         public void AddWeaponToCharacter(IWeapon weapon)
         {
             listOfWeapons.Add(weapon);

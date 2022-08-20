@@ -33,9 +33,12 @@ namespace RPG.Weapons
     public struct WeaponData
     {
         public TypesOfWeapons Type;
+        public int CountCartridges;
+        public int Range;
+        public int ShotDamage;
     }
-    
-    
+
+
     public enum TypesOfWeapons : int
     {
         /// Винтовка

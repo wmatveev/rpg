@@ -23,12 +23,11 @@ namespace Rpg
             // b.CreateJsonBalansFromExample();
 
             ICharatersFactory MainCharacter = new CharactersFactory(balance, new DamageCalculator());
-            
-            Character Player = MainCharacter.CreateCharacter("Player1");
+
+            Character Player  = MainCharacter.CreateCharacter("Player1");
             Character Enemy1  = MainCharacter.CreateCharacter("Enemy1");
-            Character Enemy2  = MainCharacter.CreateCharacter("Enemy2");
-            
-            
+
+
             IAttack Attack = new Attack.Attack();
             Attack.CharacterAttack(Player, Enemy1);
         }
@@ -42,6 +41,10 @@ namespace Rpg
         public IHealthStatus Health { get; private set; }
 
         public IWeaponController WeaponController;
+
+        // Создаем словарь, а не лист, потому что мы должны помимо инстанса на оружие хранить наименование (ID)
+        public Dictionary<string, IWeapon> Weapons = new Dictionary<string, IWeapon>();
+        // public List<IWeapon> Weapons = new List<IWeapon>();
 
         public Character(Stats stats, IDamageCalculator damageCalculator)
         {

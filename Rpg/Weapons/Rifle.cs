@@ -1,3 +1,4 @@
+using System.Data;
 using Rpg.Target;
 
 namespace RPG.Weapons
@@ -10,6 +11,13 @@ namespace RPG.Weapons
         public bool CanShoot       { get; }
         public int ShotDamage      { get; }
 
+        public Rifle(WeaponData weaponData)
+        {
+            CountCartridges = weaponData.CountCartridges;
+            Range = weaponData.Range;
+            ShotDamage = weaponData.ShotDamage;
+        }
+        
         public ITarget Shoot()
         {
             throw new System.NotImplementedException();

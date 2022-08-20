@@ -6,6 +6,7 @@ namespace RPG.Character.CharacterCreationFactory
     public class PlayerBalance
     {
         public Stats Stats;
+        public List<string> AvailableWeapons;
     }
 
     // + тип поведения
